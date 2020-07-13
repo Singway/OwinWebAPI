@@ -5,3 +5,6 @@
 /packages
 /BackEnd/.vs
 /FrontEnd/.vs
+/BackEnd/packages
+/BackEnd/obj/Debug
+/BackEnd/bin/Debug
