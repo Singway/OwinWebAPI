@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Microsoft.Owin.Cors;
 using Owin;
 using TestOwin.Controllers;
 
@@ -13,6 +14,7 @@ namespace TestOwin
     {
         public void Configuration(IAppBuilder app)
         {
+            app.UseCors(CorsOptions.AllowAll);
             //创建Web API 的配置
             var config = new HttpConfiguration();
             //启动标记路由
