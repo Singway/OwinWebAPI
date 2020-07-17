@@ -6,7 +6,7 @@
       <el-table-column prop="Age" label="年龄"></el-table-column>
       <el-table-column prop="Name" label="姓名"></el-table-column>
     </el-table>
-    <el-button type="primary" @click="loadData"></el-button>
+    <el-button type="primary" @click="loadData">读取</el-button>
   </div>
 </template>
 
@@ -22,10 +22,10 @@ export default {
   mounted() {},
   methods: {
     loadData() {
-      axios
+      this.$axios
         .get("http://localhost:9000/api/value/Getall")
         .then(res => {
-          this.tableData = res;
+          this.tableData = res.data;
         })
         .catch(error => {
           console.log(error);

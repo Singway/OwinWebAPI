@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <!-- <el-button type="primary" @click="gotoValue">{{buttonValue}}</el-button> -->
-    <router-link to="/value">{{buttonValue}}</router-link>
-    <router-view></router-view>
+    <el-button type="primary" @click="gotoValue">{{buttonValue}}</el-button>
+    <!-- <router-link to="/value">{{buttonValue}}</router-link>
+    <router-view></router-view> -->
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
   },
   methods:{
     gotoValue(){
-      this.$router.push()
+      this.$router.push("value")
     }
   }
 }
