@@ -8,3 +8,5 @@
 /BackEnd/packages
 /BackEnd/obj/Debug
 /BackEnd/bin/Debug
+/BackEnd/TestOwin/bin/Debug
+/BackEnd/TestOwin/obj/Debug
