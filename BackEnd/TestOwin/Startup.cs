@@ -15,6 +15,7 @@ namespace TestOwin
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll);
+            app.MapSignalR();
             //创建Web API 的配置
             var config = new HttpConfiguration();
             //启动标记路由
