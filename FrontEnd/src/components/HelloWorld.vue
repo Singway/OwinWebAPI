@@ -18,6 +18,16 @@ export default {
       buttonValue:"前往Value模块"
     }
   },
+  mounted(){
+    this.$axios
+        .get("http://localhost:9000/Connections/HelloConnection")
+        .then(res => {
+          console.log(res);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  },
   methods:{
     gotoValue(){
       this.$router.push("value")

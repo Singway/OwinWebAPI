@@ -7,11 +7,11 @@ import axios from 'axios'
 Vue.prototype.$axios=axios;
 
 import App from './App.vue'
-
 import Value from './components/Value.vue'
 import Hello from './components/HelloWorld.vue'
 
 Vue.use(ElementUI);
+
 
 Vue.use(VueRouter);
 

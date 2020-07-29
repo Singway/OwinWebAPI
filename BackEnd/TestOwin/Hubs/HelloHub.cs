@@ -9,9 +9,9 @@ namespace TestOwin.Hubs
 {
     class HelloHub:Hub
     {
-        public void Send(string msg)
+        public async Task Send(string msg)
         {
-            Clients.All.hello(Context.ConnectionId, msg);
+            await Clients.All.SendAsync("Hello", Context.ConnectionId, msg);
         }
     }
 }

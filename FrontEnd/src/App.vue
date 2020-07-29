@@ -22,21 +22,46 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import Value from "./components/Value.vue";
+import $ from 'jquery';
+import * as signalR from 'signalr';
+window.jquery = $;
 
 export default {
   name: "App",
   components: {
     HelloWorld,
-    Value
+    Value,
   },
   data() {
     return {
       form: {
-        msg: ""
+        msg: "",
       },
-      messages: ""
+      messages: "",
     };
-  }
+  },
+  methods: {
+    onSubmit() {},
+  },
+  created() {
+    var connection = signalR.hubConnection('localhost:9000');
+    console.log(connection);
+    // var connection = new signalR.HubConnectionBuilder()
+    //   .withUrl("http://localhost:9000/signalr/hubs")
+    //   .withAutomaticReconnect()
+    //   .build();
+    // connection.start().then((a) => {
+    //   if (connection.connectionId) {
+    //     connection
+    //       .invoke("Send",'好难受啊')
+    //       .catch((err) => console.log(err.toString()));
+    //   }
+    // });
+    // connection.on("Hello", (userid, msg) => {
+    //   console.log(userid + ":" + msg);
+    // });
+  },
+  mounted() {},
 };
 </script>
 
