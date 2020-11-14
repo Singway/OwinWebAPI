@@ -9,6 +9,8 @@ Vue.prototype.$axios=axios;
 import App from './App.vue'
 import Value from './components/Value.vue'
 import Hello from './components/HelloWorld.vue'
+import socketTest from './components/socketTest.vue'
+import PickList from './components/TestPickList.vue'
 
 Vue.use(ElementUI);
 
@@ -16,8 +18,11 @@ Vue.use(ElementUI);
 Vue.use(VueRouter);
 
 const routes=[
+  {path:'/',redirect:'/helloworld'},
   {path:'/helloworld',name:"heollo",component:Hello},
   {path:'/value',name:"value",component:Value},
+  {path:'/socket',name:"socket",component:socketTest},
+  {path:'/pickList',name:"picklist",component:PickList},
 ]
 const router = new VueRouter({
   routes

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Owin;
 using TestOwin.Connections;
 using TestOwin.Controllers;
 using TestOwin.Hubs;
 
+[assembly: OwinStartup(typeof(TestOwin.Startup))]
 namespace TestOwin
 {
     public  class Startup
@@ -28,6 +31,7 @@ namespace TestOwin
                 name: "DefaultApi",  
                 routeTemplate: "api/{controller}/{action}"
             );
+
             app.Map("/signalr", map =>
             {
                 map.UseCors(CorsOptions.AllowAll);

@@ -2,7 +2,7 @@
   <div id="app">
     <el-form :model="form" ref="form" label-width="80px">
       <el-row>
-        <el-col :span="8">
+        <!-- <el-col :span="8">
           <el-form-item label>
             <el-input v-model="form.msg" placeholder="请输入消息"></el-input>
           </el-form-item>
@@ -11,7 +11,7 @@
           <el-form-item>
             <el-button type="primary" @click="onSubmit">发送</el-button>
           </el-form-item>
-        </el-col>
+        </el-col> -->
       </el-row>
     </el-form>
     <div>{{messages}}</div>
@@ -22,9 +22,6 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import Value from "./components/Value.vue";
-import $ from 'jquery';
-import * as signalR from 'signalr';
-window.jquery = $;
 
 export default {
   name: "App",
@@ -44,22 +41,7 @@ export default {
     onSubmit() {},
   },
   created() {
-    var connection = signalR.hubConnection('localhost:9000');
-    console.log(connection);
-    // var connection = new signalR.HubConnectionBuilder()
-    //   .withUrl("http://localhost:9000/signalr/hubs")
-    //   .withAutomaticReconnect()
-    //   .build();
-    // connection.start().then((a) => {
-    //   if (connection.connectionId) {
-    //     connection
-    //       .invoke("Send",'好难受啊')
-    //       .catch((err) => console.log(err.toString()));
-    //   }
-    // });
-    // connection.on("Hello", (userid, msg) => {
-    //   console.log(userid + ":" + msg);
-    // });
+   
   },
   mounted() {},
 };
