@@ -15,7 +15,6 @@ namespace TestSocket.Controllers
     [RoutePrefix("api/socket")]
     public class SocketController : ApiController
     {
-        private static  WebSocket webSocket;
         [HttpGet, Route("get")]
         public HttpResponseMessage Get()
         {
@@ -26,19 +25,13 @@ namespace TestSocket.Controllers
             return new HttpResponseMessage(System.Net.HttpStatusCode.SwitchingProtocols);
         }
 
-        [HttpGet, Route("send")]
-        public async Task Send()
-        {
-            string msg = "测试数据";
-            var bytes = Encoding.UTF8.GetBytes(msg);
-            await webSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, new CancellationToken());
-        }
-
         private async Task ProcessWSMsg(AspNetWebSocketContext arg)
         {
             //获取当前的WebSocket对象
-            webSocket = arg.WebSocket;
+            WebSocket webSocket = arg.WebSocket;
 
+            var key = arg.SecWebSocketKey;
+            await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(key)), WebSocketMessageType.Text, true, new CancellationToken());
             /*
              * 我们定义一个常数，它将表示接收到的数据的大小。 它是由我们建立的，我们可以设定任何值。 我们知道在这种情况下，发送的数据的大小非常小。
             */
