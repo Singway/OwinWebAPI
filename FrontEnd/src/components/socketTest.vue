@@ -22,7 +22,7 @@
     </el-row>
     <br />
     <el-row :gutter="20">
-      <el-button type="primary" size="default" @click="close">关闭</el-button>
+      <el-button type="warning" size="default" @click="close">关闭</el-button>
       <el-button type="primary" size="default" @click="create"
         >创建连接</el-button
       >
@@ -49,8 +49,10 @@ export default {
   methods: {
     initWebSocket() {
       let that = this;
-      debugger
-      if (!!window.webSocket) {
+      if (
+        !!window.webSocket &&
+        window.webSocket.readyState == window.webSocket.OPEN
+      ) {
         return;
       }
       //如果WebSocket对象未初始化，我们将初始化它
@@ -61,7 +63,7 @@ export default {
       };
       //消息数据处理程序
       window.webSocket.onmessage = function (e) {
-        that.receivedMsg += e.data;
+        that.receivedMsg += e.data + "\r\n";
       };
 
       //关闭事件处理程序
@@ -73,14 +75,11 @@ export default {
       window.webSocket.onerror = function (e) {
         console.log(e.message);
       };
-      
     },
     output() {
-      debugger;
       alert("来了宝贝");
     },
     sendMsg() {
-      debugger;
       if (!window.webSocket) {
         alert("找不到socket实例");
         return;
@@ -92,7 +91,15 @@ export default {
     create() {
       this.initWebSocket();
     },
-    close() {},
+    close() {
+      if (!window.webSocket) {
+        alert("找不到socket实例");
+        return;
+      }
+      if (window.webSocket.readyState == window.webSocket.OPEN) {
+        window.webSocket.close();
+      }
+    },
   },
 };
 </script>

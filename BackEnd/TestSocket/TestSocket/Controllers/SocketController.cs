@@ -29,9 +29,14 @@ namespace TestSocket.Controllers
         {
             //获取当前的WebSocket对象
             WebSocket webSocket = arg.WebSocket;
-
             var key = arg.SecWebSocketKey;
-            await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(key)), WebSocketMessageType.Text, true, new CancellationToken());
+            foreach (var item in SocketLibrary.sockets)
+            {
+                await item.Value.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(key + " connected")), WebSocketMessageType.Text, true, new CancellationToken());
+            }
+
+            //存储key和socket
+            SocketLibrary.sockets.Add(key, webSocket);
             /*
              * 我们定义一个常数，它将表示接收到的数据的大小。 它是由我们建立的，我们可以设定任何值。 我们知道在这种情况下，发送的数据的大小非常小。
             */
@@ -52,6 +57,8 @@ namespace TestSocket.Controllers
                 if (webSocketReceiveResult.MessageType == WebSocketMessageType.Close)
                 {
                     await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, cancellationToken);
+
+                    SocketLibrary.sockets.Remove(key);
                 }
                 else
                 {
