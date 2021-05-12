@@ -62,7 +62,7 @@ namespace TestSocket.Controllers
                 }
                 else
                 {
-                    byte[] payloadData = receivedDataBuffer.Array.Where(b => b != 0).ToArray();
+                    byte[] payloadData = receivedDataBuffer.Array.Where(b => b != 0).ToArray();//
 
                     //因为我们知道这是一个字符串，我们转换它
                     string receiveString = Encoding.UTF8.GetString(payloadData, 0, payloadData.Length); 
