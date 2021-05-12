@@ -64,7 +64,7 @@ namespace TestSocket.Controllers
                 {
                     byte[] payloadData = receivedDataBuffer.Array.Where(b => b != 0).ToArray();
 
-                    //因为我们知道这是一个字符串，我们转换它
+                    //因为我们知道这是一个字符串，我们转换它 
                     string receiveString = Encoding.UTF8.GetString(payloadData, 0, payloadData.Length);
 
                     //将字符串转换为字节数组. 
