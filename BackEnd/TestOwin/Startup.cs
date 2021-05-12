@@ -38,7 +38,7 @@ namespace TestOwin
                 var hubConfiguration = new HubConfiguration
                 {
                     EnableDetailedErrors = true,
-                    EnableJSONP = true
+                    EnableJSONP = true,
                 };
                 map.RunSignalR(hubConfiguration);
             });
