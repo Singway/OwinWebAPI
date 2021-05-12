@@ -56,6 +56,7 @@ namespace TestSocket.Controllers
                 //如果输入帧为取消帧，发送close命令
                 if (webSocketReceiveResult.MessageType == WebSocketMessageType.Close)
                 {
+                    //
                     await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, cancellationToken);
 
                     SocketLibrary.sockets.Remove(key);
