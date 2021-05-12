@@ -58,7 +58,7 @@ namespace TestSocket.Controllers
                 {
                     await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, cancellationToken);
 
-                    SocketLibrary.sockets.Remove(key);
+                    SocketLibrary.sockets.Remove(key); 
                 }
                 else
                 {
