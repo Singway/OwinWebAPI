@@ -25,7 +25,7 @@ namespace TestOwin
             //app.MapSignalR();
             //创建Web API 的配置
             var config = new HttpConfiguration();
-            //启动标记路由
+            //启动标记路由 
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",  
